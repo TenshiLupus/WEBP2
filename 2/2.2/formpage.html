@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formpage</title>
+</head>
+
+<body> 
+    <form method="post" action="formhandler.php">
+        text input : <input type="text" name="text-content" value="no text">
+        <br>
+        textarea : <input typer="textarea" name="textarea-content" value="empty">
+        <br>
+        <div>
+            <label for="rb1">Radio 1</label>
+            <input type="radio" name="radio-b" value="v1" id="rb1" checked="checked">
+            <label for="rb2">Radio 2</label>
+            <input type="radio" name="radio-b" value="v2" id="rb2">
+            <label for="rb3">Radio 3</label>
+            <input type="radio" name="radio-b" value="v3" id="rb3">
+        </div>
+        <br>
+        <select name="options" size="1">
+            <option value="o1">o1</option>
+            <option value="o2">o2</option>
+        </select>
+        <br>
+        <div>
+            <label for="cb">checkbox field</label>
+            <input type="checkbox" name="checkbox-content" value="ON" checked="checked" id="cb">
+        </div>
+        <br>
+        <input type="submit" value="submit-form" name="submit-button">
+
+    </form>
+    <br>
+    <br>
+    <br>    
+    <form method="get" action="formhandler.php">
+        text input : <input type="text" name="text-content" value="no text">
+        <br>
+        textarea : <input typer="textarea" name="textarea-content" value="empty">
+        <br>
+        <div>
+            <label for="rb1">Radio 1</label>
+            <input type="radio" name="radio-b" value="v1" id="rb1" checked="checked">
+            <label for="rb2">Radio 2</label>
+            <input type="radio" name="radio-b" value="v2" id="rb2">
+            <label for="rb3">Radio 3</label>
+            <input type="radio" name="radio-b" value="v3" id="rb3">
+        </div>
+        <br>
+
+        <select name="options" size="1">
+            <option value="o1">o1</option>
+            <option value="o2">o2</option>
+        </select>
+
+        <br>
+
+        <div>
+            <label for="cb">checkbox field</label>
+            <input type="checkbox" name="checkbox-content" value="ON" checked="checked" id="cb">
+        </div>
+
+        <br>
+        
+        <input type="submit" value="submit-form" name="submit-button">
+
+    </form>
+</body>
+
+</html>
