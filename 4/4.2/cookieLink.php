@@ -7,7 +7,7 @@
     header("Content-type: text/html");
     
     $cookieValue = $_COOKIE["session"];
-  
+    
     $mainPage = file_get_contents("cookieLink.html");
 
     $pageToDisplay = str_replace("---session-id---", $cookieValue, $mainPage);
