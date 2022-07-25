@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 
 const app = new express();
 
-app.use(bodyParser.urlEncoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
+    
+    // similar to php's echo
     res.send(`
     <div>
     <form method="POST">
