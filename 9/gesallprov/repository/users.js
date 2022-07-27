@@ -1,6 +1,7 @@
 const fs = require('fs');
 const crypto = require('crypto')
 
+
 class UsersRepository {
     constructor (filename){
         if(!filename){
@@ -31,6 +32,8 @@ class UsersRepository {
         // write the updated records array back to this.filename
 
         await this.writeAll(records);
+
+        return attributes;
     }
 
     async writeAll(records){
