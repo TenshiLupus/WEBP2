@@ -1,9 +1,8 @@
 const express = require('express');
 const usersRepo = require('../../repository/users.js');
-
 const router = express.Router();
 
-router.app.get('/signup', (req, res) => {
+router.get('/signup', (req, res) => {
     res.send(`
       <div>
         Your id is: ${req.session.userId}
@@ -17,7 +16,7 @@ router.app.get('/signup', (req, res) => {
     `);
 });
 
-router.app.post('/signup', async (req, res) => {
+router.post('/signup', async (req, res) => {
     const { email, password, passwordConfirmation } = req.body;
 
     const existingUser = await usersRepo.getOneBy({ email });
@@ -38,12 +37,12 @@ router.app.post('/signup', async (req, res) => {
     res.send('Account created!!!');
 });
 
-router.app.get('/signout', (req, res) => {
+router.get('/signout', (req, res) => {
     req.session = null;
     res.send('You are logged out');
 });
 
-router.app.get('/signin', (req, res) => {
+router.get('/signin', (req, res) => {
     res.send(`
       <div>
         <form method="POST">
@@ -55,7 +54,7 @@ router.app.get('/signin', (req, res) => {
     `);
 });
 
-router.app.post('/signin', async (req, res) => {
+router.post('/signin', async (req, res) => {
     const { email, password } = req.body;
 
     const user = await usersRepo.getOneBy({ email });
