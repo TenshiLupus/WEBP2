@@ -7,12 +7,14 @@ module.exports = {
     requireTitle: check('title')
     .trim()
     .isLength()
+    .withMessage('Must be between 5 and 40 characters')
     ,
 
     requirePrice: check('price')
     .trim()
     .toFloat()
-    .isFloat()
+    .isFloat({min: 1})
+    .withMessage('Must be a number greater than 1')
     
     ,
     requireEmail: check('email')
