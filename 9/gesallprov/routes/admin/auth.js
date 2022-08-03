@@ -1,9 +1,9 @@
 const express = require('express');
 
 
-const {handleErrors} = require('./middlewares')
+const {handleErrors} = require('./middleware')
 const usersRepo = require('../../repository/users');
-const signupTemplate = require('../../views/admin/authentication/signup');
+const signUpTemplate = require('../../views/admin/authentication/signup');
 const signInTemplate = require('../../views/admin/authentication/signin');
 const { 
     requireEmail, 
@@ -16,12 +16,12 @@ const {
 const router = express.Router();
 
 router.get('/signup', (req, res) => {
-    res.send(signupTemplate({req}));
+    res.send(signUpTemplate({req}));
 });
 
 router.post('/signup', 
     [requireEmail, requirePassword, requirePasswordConfirmation],
-    handleErrors(signInTemplate), 
+    handleErrors(signUpTemplate), 
     async (req, res) => {
 
         const { email, password } = req.body;
@@ -32,7 +32,7 @@ router.post('/signup',
         // Store the id of that user inside the users cookie
         req.session.userId = user.id;
 
-        res.send('Account created!!!');
+        res.redirect('admin/products')
     }
 );
 
@@ -48,7 +48,8 @@ router.get('/signin', (req, res) => {
 });
 
 router.post('/signin', [requireEmailExists, requireValidPasswordForUser], 
-handleErrors(signinTemplate), 
+
+handleErrors(signInTemplate), 
 async (req, res) => { 
 
     const { email, password } = req.body;
@@ -56,7 +57,7 @@ async (req, res) => {
 
     req.session.userId = user.id;
 
-    res.send('You are signed in!!!');
+    res.redirect('admin/');
 });
 
 module.exports = router;
