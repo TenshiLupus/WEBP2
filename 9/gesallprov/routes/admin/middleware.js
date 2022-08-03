@@ -5,10 +5,16 @@ module.exports = {
         return (req, res, next) => {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-
-
-                next();
+                return res.send(templateFunction());
             }
+            next();
         };
+    },
+    requireAuth(req,res, next){
+        if(req.session.userId){
+            return res.resdirect('/signin')
+        }
+
+        next()
     }
 };

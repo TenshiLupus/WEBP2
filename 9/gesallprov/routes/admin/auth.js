@@ -57,7 +57,7 @@ async (req, res) => {
 
     req.session.userId = user.id;
 
-    res.redirect('admin/');
+    res.redirect('admin/products');
 });
 
 module.exports = router;
