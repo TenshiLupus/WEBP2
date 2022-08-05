@@ -52,12 +52,13 @@ router.post('/signin', [requireEmailExists, requireValidPasswordForUser],
 handleErrors(signInTemplate), 
 async (req, res) => { 
 
-    const { email, password } = req.body;
+    const { email} = req.body;
     const user = await usersRepo.getOneBy({ email });
 
     req.session.userId = user.id;
 
     res.redirect('/admin/products');
+    console.log('signin redirected');
 });
 
 module.exports = router;

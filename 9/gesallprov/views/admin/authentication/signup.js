@@ -1,6 +1,7 @@
 const layout = require('../layout');
 const { getError } = require('../../helpers');
 
+// Signup view to display to the user on request
 module.exports = ({ req, errors }) => {
   return layout({
     content: `

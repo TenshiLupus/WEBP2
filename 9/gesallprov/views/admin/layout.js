@@ -1,3 +1,4 @@
+// Main page layout that will be reused across the different views
 module.exports = ({ content }) => {
     return `
       <!DOCTYPE html>

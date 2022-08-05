@@ -1,3 +1,5 @@
+// Layout template to display items to users
+
 module.exports = ({ content }) => {
   return `
     <!DOCTYPE html>

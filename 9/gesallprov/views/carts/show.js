@@ -1,11 +1,7 @@
 const layout = require('../layout');
 
+// Cart view to display to the user
 module.exports = ({ items }) => {
-	// let totalPrice = 0;
-
-	// for (let item of items){
-	// 	totalPrice += item.quantity * item.price;
-	// }
 
 	const totalPrice = items.reduce((prev, item) => {
 		return prev + item.quantity * item.product.price;

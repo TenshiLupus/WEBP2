@@ -9,7 +9,7 @@ const productsIndexTemplate = require('../views/products/index');
 //create an express routing handler 
 const router = express.Router();
 
-//root request to our home page
+//root request to the user home page
 router.get('/', async (req, res) => {
     const products = await productsRepo.getAll();
     res.send(productsIndexTemplate({products}));

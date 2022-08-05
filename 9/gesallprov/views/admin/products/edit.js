@@ -1,6 +1,7 @@
 const layout = require('../layout');
 const { getError } = require('../../helpers');
 
+// edit product view to display to the user
 module.exports = ({ product, errors }) => {
   return layout({
     content: `

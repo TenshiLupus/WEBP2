@@ -1,6 +1,7 @@
 const layout = require('../layout');
 const { getError } = require('../../helpers');
 
+// Signin view to display to the user on request
 module.exports = ({ errors }) => {
   return layout({
     content: `

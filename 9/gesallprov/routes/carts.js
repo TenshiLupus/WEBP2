@@ -23,7 +23,7 @@ router.post('/cart/products', async (req, res) => {
     const existingItem = cart.items.find(item => item.id === req.body.productId);
 
     if(existingItem){
-        // increment 
+        // increment the amount of items in the cart by 1
         existingItem.quantity++;
     }else{
         cart.items.push({id: req.body.productId, quantity: 1});
@@ -35,6 +35,7 @@ router.post('/cart/products', async (req, res) => {
     res.redirect('/cart');
 });
 
+// On request render and display all items in cart to the user
 router.get('/cart', async (req, res) => {
     
     if(!req.session.cartId){
@@ -52,6 +53,7 @@ router.get('/cart', async (req, res) => {
     res.send(cartShowTemplate({items: cart.items}))
 });
 
+// on request for deletion. Retain only the items that were not requested for deletion
 router.post('cart/products/delete', async (req, res) => {
     const {itemId} = req.body;
     const cart = await cartsRepo.getOne(req.session.cardId);
