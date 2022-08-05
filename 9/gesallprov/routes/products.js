@@ -11,7 +11,7 @@ const router = express.Router();
 
 //root request to our home page
 router.get('/', async (req, res) => {
-    const products = await products.getAll();
+    const products = await productsRepo.getAll();
     res.send(productsIndexTemplate({products}));
 });
 
