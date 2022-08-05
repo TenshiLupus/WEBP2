@@ -54,9 +54,9 @@ router.get('/cart', async (req, res) => {
 });
 
 // on request for deletion. Retain only the items that were not requested for deletion
-router.post('cart/products/delete', async (req, res) => {
+router.post('/cart/products/delete', async (req, res) => {
     const {itemId} = req.body;
-    const cart = await cartsRepo.getOne(req.session.cardId);
+    const cart = await cartsRepo.getOne(req.session.cartId);
 
     const items = cart.items.filter(item => item.id !== itemId);
 

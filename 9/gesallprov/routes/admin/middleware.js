@@ -20,7 +20,7 @@ module.exports = {
     },
     // if the users is not signed in require them to fisrs sign in
     requireAuth(req,res, next){
-        if(req.session.userId){
+        if(!req.session.userId){
             return res.redirect('/signin')
         }
 
