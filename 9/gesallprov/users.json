@@ -13,5 +13,20 @@
     "email": "vart@hotmail.com",
     "password": "32306c1195b123a0f6df62e1c6a92ed480c793ecfe9a48a5b660f268588b034f8fa0efd82ffdf3e7d7cdac09353a36321f39d20e3d029f528f88e82bfd7c853a.9d16c4695ee0fe75",
     "id": "83b6bd47"
+  },
+  {
+    "email": "car@test.com",
+    "password": "fde4976c02dca1ff31f59e57ecc5c98f6cb9db1307a1c94164b2caa319ce9fa1f2bddb6275973938409efc6fb75986b0c30aaa39d75647811079b281b5004e49.bce458537700b694",
+    "id": "885dc439"
+  },
+  {
+    "email": "barba@barb.com",
+    "password": "0fe5f3a52bde229895302647a177c969b571fad1b45968bea91158d6654f71b6442937dc82b9a1063fac7c1c44f37b41cd1bc139b23f922580699c6e5bf0716e.206a44c4d154627c",
+    "id": "fde43db0"
+  },
+  {
+    "email": "barton@barton.com",
+    "password": "4432ec71ccff5e77c445c1b5ff54fbcebed5da18f8716891a78c8df5fa919e8d66542cc203a63639023a7c3a41e795c4ef00290bcf176b64aa2e6d335bd148c2.b9d7c9cb420830d3",
+    "id": "35640502"
   }
 ]
