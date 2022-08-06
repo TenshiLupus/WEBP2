@@ -1,12 +1,29 @@
 
 const mongoose = require('mongoose');
-// database connection
+mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => {
+        console.log('CONNECTION ESTABLISHED');
+    }).catch(err => {
+        console.log(err);
+    });
 
+// database connection
+const adminUserSchema = new mongoose.Schema({
+    email : String,
+    password: String,
+    _id : String
+});
 class DatabaseHandler {
     constructor(){
-    mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
+        
     }
+
+    createNewAdmin(newAdmin){
+        const Admin = mongoose.model('Admin', adminUserSchema);
+        const newAdminCollection = new Admin(newAdmin.email, newAdmin.password, newAdmin.id);
+    }
+    
 
 }
 
-module.exports = DatabaseHandler();
+module.exports = new DatabaseHandler();

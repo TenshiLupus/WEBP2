@@ -9,6 +9,7 @@ const scrypt = util.promisify(crypto.scrypt);
 
 class UsersRepository extends Repository{
 	
+	// encrypt information related to the user
 	async create(attributes) {
 		attributes.id = this.randomId();
 
