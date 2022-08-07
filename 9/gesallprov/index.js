@@ -7,6 +7,10 @@ const adminProductsRouter = require('./routes/admin/products');
 const productsRouter = require('./routes/products');
 const cartsRouter = require('./routes/carts');
 
+const mysql = require('mysql');
+
+mysql.connect(mysql)
+
 const app = express();
 // Dictate where to first look for resources on request
 app.use(express.static('public'));
