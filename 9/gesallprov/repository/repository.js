@@ -24,7 +24,6 @@ module.exports = class Repository {
         );
       }
 
-      // Rewrite existing records with the updated records list
       async writeAll(records) {
         await fs.promises.writeFile(
           this.filename,
