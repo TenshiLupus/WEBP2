@@ -15,6 +15,7 @@ const upload = multer({storage: multer.memoryStorage() });
 
 router.get('/admin/products', requireAuth, async (req, res) => {
     const products =  await productsRepo.getAll();
+    console.log(products);
     res.send(productsIndexTemplate({products}));
 });
 
