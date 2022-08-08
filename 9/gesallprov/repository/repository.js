@@ -2,15 +2,36 @@ const fs = require('fs');
 const crypto = require('crypto');
 const util = require('util');
 
+
+const mysql = require('mysql');
+
+const dbConnection = mysql.createConnection({
+	host: "atlas.dsv.su.se",
+	user: "usr_21114200",
+	password: "114200",
+	database: "db_21114200"
+});
+
+dbConnection.connect(err => {
+		if (err) throw err;
+
+		console.log('connected');
+
+	}
+);
+
+
+
 module.exports = class Repository {
-    constructor(filename) {
-        if (!filename) {
+    constructor(table) {
+        if (!table) {
           throw new Error('Creating a repository requires a filename');
         }
     
-        this.filename = filename;
+        this.table = table;
+       
         try {
-          fs.accessSync(this.filename);
+          ;
         } catch (err) {
           fs.writeFileSync(this.filename, '[]');
         }
