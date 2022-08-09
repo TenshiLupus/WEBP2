@@ -12,10 +12,15 @@ const dbConnection = mysql.createConnection({
 	database: "db_21114200"
 });
 
+dbConnection.connect(async err => {
+	if (err) throw err;
+	else console.log('CONNECTED TO DATABASE');
+});
+
 module.exports = class Repository {
 	constructor(table) {
 		if (!table) {
-			throw new Error('Creating a repository requires a filename');
+			throw new Error('"Creating a repository requires a filename"');
 		}
 
 		this.table = table;
@@ -34,37 +39,30 @@ module.exports = class Repository {
 	async getAll() {
 
 		const getAllQuery = `SELECT * FROM ${this.table}`;
-	
-		
-		let records = {}
-		dbConnection.connect(async err => {
-			
-			const queryPromise = () => {
-				return new Promise((resolve, reject) =>{
-					dbConnection.query(getAllQuery, (err, result) => {
-						if(err) return reject(err);
-						return resolve(result);
-					});
+
+		const queryPromise = () => {
+			return new Promise((resolve, reject) =>{
+				dbConnection.query(getAllQuery, (err, result) => {
+					if(err) return reject(err);
+					console.log(result);
+					return resolve(result);
 				});
-			};
+			});
+		};
+		let records = {};
+		records = await queryPromise();
+		console.log(typeof(records));
 
-			try{
+		console.log('GETING ALL#################');
 
-			records = await queryPromise();
-			console.log(typeof(queryResult));
-
-			console.log('GETING ALL#################');
-			} catch (error){
-				console.log(error);
-			}
-		});
 		console.log('returned' + records);
 		return records;
+		
 	}
 
 	async writeAll(records) {
 
-		const writeAllQuery = `"INSERT INTO ${this.table} (title, price, image, id) VALUES ?"`;
+		const writeAllQuery = `INSERT INTO ${this.table} (title, price, image, id) VALUES ?`;
 
 		console.log(records);
 
