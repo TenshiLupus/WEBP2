@@ -2,7 +2,11 @@ const layout = require('../layout');
 
 // Display existing items to the user
 module.exports = ({ products }) => {
-  const renderedProducts = products
+  console.log('***********************');
+  console.log(products);
+  console.log(typeof(products));
+
+  let renderedProducts = (Object.keys(products).length === 0) ? "" : products
     .map(product => {
       return `
         <div class="column is-one-quarter">
@@ -27,7 +31,7 @@ module.exports = ({ products }) => {
       `;
     })
     .join('\n');
-
+  
   return layout({
     content: `
       <section class="banner">

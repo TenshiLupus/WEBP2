@@ -45,4 +45,4 @@ class UsersRepository extends Repository{
       }
 }
 
-module.exports = new UsersRepository('users');
+module.exports = new UsersRepository('Users');
