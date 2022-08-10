@@ -36,13 +36,10 @@ class UsersRepository extends Repository{
         return hashedPassword === hashedSuppliedBuffer.toString('hex');
     
       }
-    
-      async writeAll(records) {
-        await fs.promises.writeFile(
-          this.filename,
-          JSON.stringify(records, null, 2)
-        );
-      }
+        // await fs.promises.writeFile(
+        //   this.filename,
+        //   JSON.stringify(records, null, 2)
+        // );
 }
 
-module.exports = new UsersRepository('Users');
+module.exports = new UsersRepository('Users', 'email, password, id');

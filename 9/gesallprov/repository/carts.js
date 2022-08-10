@@ -4,4 +4,4 @@ class CartsRepository extends Repository{
 
 }
 
-module.exports = new CartsRepository('Carts'); 
+module.exports = new CartsRepository('Carts', 'items, id'); 

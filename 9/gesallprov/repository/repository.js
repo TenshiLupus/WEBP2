@@ -18,17 +18,22 @@ dbConnection.connect(async err => {
 });
 
 module.exports = class Repository {
-	constructor(table) {
+	constructor(table, sqlArguments) {
 		if (!table) {
 			throw new Error('"Creating a repository requires a filename"');
 		}
 
 		this.table = table;
+
+		this.dbConnection = dbConnection;
+		
+		this.sqlArguments = sqlArguments;
+
 	}
 
 	queryPromise = (query) => {
 		return new Promise((resolve, reject) =>{
-			dbConnection.query(query, (err, result) => {
+			this.dbConnection.query(query, (err, result) => {
 				if(err) return reject(err);
 				return resolve(result);
 			});
@@ -38,20 +43,20 @@ module.exports = class Repository {
 	//Read from database
 	async getAll() {
 
-		const getAllQuery = `SELECT * FROM ${this.table}`;
+		const getAllQuery = `SELECT ${this.sqlArguments} FROM ${this.table}`;
 
 		const queryPromise = () => {
 			return new Promise((resolve, reject) =>{
-				dbConnection.query(getAllQuery, (err, result) => {
+				this.dbConnection.query(getAllQuery, (err, result, fields) => {
 					if(err) return reject(err);
 					console.log(result);
 					return resolve(result);
 				});
 			});
 		};
+
 		let records = {};
 		records = await queryPromise();
-		console.log(typeof(records));
 
 		console.log('GETING ALL#################');
 
@@ -60,32 +65,38 @@ module.exports = class Repository {
 		
 	}
 
-	async writeAll(records) {
+	async writeAll(attributes) {
 
-		const writeAllQuery = `INSERT INTO ${this.table} (title, price, image, id) VALUES ?`;
+		const writeAllQuery = `INSERT INTO ${this.table}(${this.sqlArguments}) VALUES ?`;
 
-		console.log(records);
-
-		let queryResult = {};
-		dbConnection.connect(async err => {
-
-			const queryPromise = () => {
-				return new Promise((resolve, reject) =>{
-					dbConnection.query(query, records, (err, result) => {
-						if(err) return reject(err);
-						return resolve(result);
-					});
-				});
-			};
-
-			try{
-				queryResult = await queryPromise();
-				console.log(queryResult);
-				console.log('WRITING ALL #################');
-			} catch (err){
-				console.log(err);
+		const valuesArray = []
+		const formatedRecords = () => {
+			for (let record of records){
+				valuesArray.push(Object.values(record));
 			}
-		});
+			console.log('RECORDS' + records);
+		}
+		formatedRecords();
+		let queryResult = {};
+		console.log(valuesArray);
+
+		const queryPromise = () => {
+			return new Promise((resolve, reject) =>{
+				this.dbConnection.query(writeAllQuery, [valuesArray], (err, result) => {
+					if(err) return reject(err);
+					return resolve(result);
+				});
+			});
+		};
+
+		console.log('#########')
+		try{
+			queryResult = await queryPromise();
+			console.log(queryResult);
+			console.log('WRITING ALL #################');
+		}catch(err){
+			console.log(err);
+		}
 	}
 
 	randomId() {
@@ -99,10 +110,7 @@ module.exports = class Repository {
 
 	async create(attributes) {
 		attributes.id = this.randomId();
-
-		const records = await this.getAll();
-		records.push(attributes);
-		await this.writeAll(records);
+		await this.writeAll(attributes);
 
 		return attributes;
 	}

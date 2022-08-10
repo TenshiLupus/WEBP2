@@ -4,4 +4,4 @@ class ProductsRepository extends Repository{
     
 }
 
-module.exports = new ProductsRepository('Products')
+module.exports = new ProductsRepository('Products', 'title, price, image, id');
