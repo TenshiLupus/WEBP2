@@ -65,9 +65,9 @@ module.exports = class Repository {
 		
 	}
 
-	async writeAll(attributes) {
+	async writeAll(records) {
 
-		const writeAllQuery = `INSERT INTO ${this.table}(${this.sqlArguments}) VALUES ?`;
+		const writeAllQuery = `REPLACE INTO ${this.table}(${this.sqlArguments}) VALUES ?`;
 
 		const valuesArray = []
 		const formatedRecords = () => {
