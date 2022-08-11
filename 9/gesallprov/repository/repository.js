@@ -109,8 +109,10 @@ module.exports = class Repository {
 	}
 
 	async create(attributes) {
+		const records = await this.getAll();
 		attributes.id = this.randomId();
-		await this.writeAll(attributes);
+		records.push(attributes)
+		await this.writeAll(records);
 
 		return attributes;
 	}
