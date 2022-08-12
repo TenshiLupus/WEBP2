@@ -1,5 +1,6 @@
 const Repository = require('./repository');
 
+// Extends Repository class, inherint functionality from it
 class ProductsRepository extends Repository{
     
 }
