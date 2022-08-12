@@ -1,5 +1,6 @@
 // Layout template to display items to users
 
+//Technically not an html file, nor a valid syntactically recognized html file until parsed by the views file
 module.exports = ({ content }) => {
   return `
     <!DOCTYPE html>

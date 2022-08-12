@@ -5,6 +5,7 @@ const util = require('util');
 
 const mysql = require('mysql');
 
+//Connection attributes which to pass to the connectionHandler
 const dbConnection = mysql.createConnection({
 	host: "atlas.dsv.su.se",
 	user: "usr_21114200",
@@ -12,6 +13,7 @@ const dbConnection = mysql.createConnection({
 	database: "db_21114200"
 });
 
+//Request database for a connection
 dbConnection.connect(async err => {
 	if (err) throw err;
 	else console.log('CONNECTED TO DATABASE');
