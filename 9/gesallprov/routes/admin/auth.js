@@ -19,6 +19,7 @@ router.get('/signup', (req, res) => {
     res.send(signUpTemplate({req}));
 });
 
+// Route where users will sign and view their carts
 router.post('/signup', 
     [requireEmail, requirePassword, requirePasswordConfirmation],
     handleErrors(signUpTemplate), 
@@ -36,6 +37,7 @@ router.post('/signup',
     }
 );
 
+// log out the browser user
 router.get('/signout', (req, res) => {
     req.session = null;
     res.send('You are logged out');
@@ -47,7 +49,9 @@ router.get('/signin', (req, res) => {
     res.send(signInTemplate({}));
 });
 
+// Route where users will sign in and be validated
 router.post('/signin', [requireEmailExists, requireValidPasswordForUser], 
+
 
 handleErrors(signInTemplate), 
 async (req, res) => { 

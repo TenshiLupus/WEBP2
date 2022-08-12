@@ -3,13 +3,14 @@ const usersRepo = require('../../repository/users');
 
 //custom validators need to respond with promises otherwise invalid values will be returned
 module.exports = {
-
+    // Require a title
     requireTitle: check('title')
     .trim()
     .isLength()
     .withMessage('Must be between 5 and 40 characters')
     ,
 
+    // Require a price
     requirePrice: check('price')
     .trim()
     .toFloat()
@@ -17,6 +18,7 @@ module.exports = {
     .withMessage('Must be a number greater than 1')
     ,
     
+    // require an email 
     requireEmail: check('email')
     .trim()
     .normalizeEmail()
@@ -24,6 +26,7 @@ module.exports = {
     .withMessage('Must be a valid email')
     .custom(async email => {
 
+        // 
         const existingUser = await usersRepo.getOneBy({ email });
         if (existingUser) {
             throw new Error('Email in use');

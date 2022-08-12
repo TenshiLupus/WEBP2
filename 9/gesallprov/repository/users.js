@@ -9,9 +9,11 @@ const scrypt = util.promisify(crypto.scrypt);
 
 class UsersRepository extends Repository{
 	
+	// Create an user 
 	async create(attributes) {
 		attributes.id = this.randomId();
 
+		// Encrypt password sent in the request body
 		const salt = crypto.randomBytes(8).toString('hex');
 		const buf = await scrypt(attributes.password, salt, 64);
 
@@ -27,6 +29,7 @@ class UsersRepository extends Repository{
 		return record;
 	}
 
+	// Unencrypt the password from the corresponding record and assert whether it is the same as the one in the request body
 	async comparePasswords(saved, supplied){
         // Save -> password saved in our database. 'hashed.salt'
         // Supplied -> password given to us by a user trying to sign in.
@@ -36,10 +39,6 @@ class UsersRepository extends Repository{
         return hashedPassword === hashedSuppliedBuffer.toString('hex');
     
       }
-        // await fs.promises.writeFile(
-        //   this.filename,
-        //   JSON.stringify(records, null, 2)
-        // );
 }
 
 module.exports = new UsersRepository('Users', 'email, password, id');
