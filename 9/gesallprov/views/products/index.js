@@ -6,6 +6,7 @@ module.exports = ({ products }) => {
   console.log(products);
   console.log(typeof(products));
 
+  // reformat each product into a product template return to the view controller
   let renderedProducts = (Object.keys(products).length === 0) ? "" : products
     .map(product => {
       return `

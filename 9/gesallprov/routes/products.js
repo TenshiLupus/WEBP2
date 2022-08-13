@@ -2,6 +2,7 @@
 
 //use express as the routing middleware
 const express = require('express');
+const { redirect } = require('express/lib/response');
 const productsRepo = require('../repository/products');
 const productsIndexTemplate = require('../views/products/index');
 
@@ -11,6 +12,8 @@ const router = express.Router();
 
 //root request to the user home page
 router.get('/', async (req, res) => {
+   
+    console.log(req.session);
     const products = await productsRepo.getAll();
     res.send(productsIndexTemplate({products}));
 });

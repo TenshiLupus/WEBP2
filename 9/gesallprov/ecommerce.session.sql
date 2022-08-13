@@ -1,2 +1,0 @@
-
-CREATE TABLE Products (title VARCHAR(255), price INT, image LONGBLOB, id VARCHAR(255) PRIMARY KEY );
