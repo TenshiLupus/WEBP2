@@ -34,14 +34,7 @@ module.exports = ({ products }) => {
   
   return layout({
     content: `
-      <section class="banner">
-        <div class="container">
-          <div class="columns is-centered">
-            <img src="/images/banner.jpg" />
-          </div>
-        </div>
-      </section>
-      
+     
       <section>
         <div class="container">
           <div class="columns">

@@ -18,7 +18,7 @@ module.exports = {
     .withMessage('Must be a number greater than 1')
     ,
     
-    // require an email 
+    // require a nonregistered email on signup
     requireEmail: check('email')
     .trim()
     .normalizeEmail()
@@ -34,11 +34,13 @@ module.exports = {
 
     }),
 
+    // require a password
     requirePassword: check('password')
     .trim()
     .isLength({min: 4, max:20})
     .withMessage('Must be between 4 and 20 characters'),
 
+    // on signup require a password length between 3 and 20
     requirePasswordConfirmation: check('passwordConfirmation')
     .trim()
     .isLength({min: 4, max: 20})
@@ -49,6 +51,7 @@ module.exports = {
         }
     }),
 
+    // On signin make sure the the provided email exists 
     requireEmailExists: check('email')
     .trim()
     .normalizeEmail()
@@ -62,6 +65,7 @@ module.exports = {
         }
     }), 
 
+    // On signin make sure the provided password is valid
     requireValidPasswordForUser: check('password')
     .trim()
     .custom(async (password, {req}) => {

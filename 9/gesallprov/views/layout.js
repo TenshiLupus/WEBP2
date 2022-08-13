@@ -18,27 +18,8 @@ module.exports = ({ content }) => {
       <body>
         <header>
           <nav class="navbar navbar-top">
-            <div class="container navbar-container">
-              <div>
-                <ul class="social">
-                  <li>
-                    <a href=""><i class="fa fa-phone"></i>+1 555 987 6543</a>
-                  </li>
-                  <li>
-                    <a href=""><i class="fa fa-envelope"></i> shop@myshop.com</a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <ul class="social">
-                  <li><a href=""><i class="fab fa-facebook"></i></a></li>
-                  <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                  <li><a href=""><i class="fab fa-linkedin"></i></a></li>
-                  <li><a href=""><i class="fab fa-dribbble"></i></a></li>
-                  <li><a href=""><i class="fab fa-google-plus"></i></a></li>
-                </ul>
-              </div>
-            </div>
+            
+       
           </nav>
           <nav class="navbar navbar-bottom">
             <div class="container navbar-container">
